@@ -89,9 +89,10 @@ class HeaderTable extends FontTable {
     List<GenericGlyphMetrics> glyphMetricsList,
     GlyphDataTable? glyf,
     Revision revision,
-    int unitsPerEm,
-  ) {
-    final now = MockableDateTime.now();
+    int unitsPerEm, {
+    bool useDateTime = true,
+  }) {
+    final now = useDateTime ? MockableDateTime.now() : DateTime(0);
 
     final xMin = glyphMetricsList.fold<int>(
         kInt32Max, (prev, m) => math.min(prev, m.xMin));

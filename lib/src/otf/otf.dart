@@ -68,6 +68,7 @@ class OpenTypeFont implements BinaryCodable {
     bool? useOpenType,
     bool? usePostV2,
     bool? normalize,
+    bool useDateTime = true,
   }) {
     if (fontName?.isEmpty ?? false) {
       fontName = null;
@@ -118,8 +119,14 @@ class OpenTypeFont implements BinaryCodable {
     ];
 
     final glyf = useOpenType ? null : GlyphDataTable.fromGlyphs(fullGlyphList);
-    final head =
-        HeaderTable.create(glyphMetricsList, glyf, revision, unitsPerEm);
+    final head = HeaderTable.create(
+      glyphMetricsList,
+      glyf,
+      revision,
+      unitsPerEm,
+      useDateTime: useDateTime,
+    );
+
     final loca = useOpenType
         ? null
         : IndexToLocationTable.create(head.indexToLocFormat, glyf!);

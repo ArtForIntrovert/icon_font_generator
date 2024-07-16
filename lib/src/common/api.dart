@@ -61,6 +61,7 @@ SvgToOtfResult svgToOtf({
     normalize: normalize,
     useOpenType: true,
     usePostV2: true,
+    useDateTime: false,
   );
 
   return SvgToOtfResult._(glyphList, font);
