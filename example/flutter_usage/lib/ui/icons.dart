@@ -1,7 +1,7 @@
 // Generated code: do not hand-edit.
 
 // Generated using icon_font_generator.
-// Copyright © 2023 icon_font_generator (https://pub.dev/packages/icon_font_generator).
+// Copyright © 2024 icon_font_generator (https://pub.dev/packages/icon_font_generator).
 
 import 'package:flutter/widgets.dart';
 
@@ -13,20 +13,20 @@ import 'package:flutter/widgets.dart';
 ///
 /// To use this class, make sure you declare the font in your
 /// project's `pubspec.yaml` file in the `fonts` section. This ensures that
-/// the "Ui Icons" font is included in your application. This font is used to
+/// the "UI Icons" font is included in your application. This font is used to
 /// display the icons. For example:
 ///
 /// ```yaml
 /// flutter:
 ///   fonts:
-///     - family: Ui Icons
+///     - family: UI Icons
 ///       fonts:
 ///         - asset: fonts/icons.otf
 /// ```
-class UiIcons {
-  const UiIcons._();
+class UIIcons {
+  const UIIcons._();
 
-  static const iconFontFamily = 'Ui Icons';
+  static const iconFontFamily = 'UI Icons';
 
   /// Font icon named "__account__"
   ///

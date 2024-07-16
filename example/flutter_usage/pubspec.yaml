@@ -20,7 +20,7 @@ dev_dependencies:
 
 flutter:
   fonts:
-    - family: Ui Icons
+    - family: UI Icons
       fonts:
         - asset: fonts/icons.otf
 
@@ -29,10 +29,10 @@ icon_font:
   output_font_file: fonts/icons.otf
   
   output_class_file: lib/ui/icons.dart
-  class_name: UiIcons
+  class_name: UIIcons
   format: true
 
-  font_name: Ui Icons
+  font_name: UI Icons
   normalize: false
   ignore_shapes: false
 
