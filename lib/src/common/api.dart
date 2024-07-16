@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import '../otf.dart';
 import '../svg.dart';
 import '../utils/flutter_class_gen.dart';
@@ -35,8 +37,9 @@ SvgToOtfResult svgToOtf({
 }) {
   normalize ??= true;
 
+  final svgs = svgMap.entries.sortedBy((element) => element.key.toLowerCase());
   final svgList = [
-    for (final e in svgMap.entries)
+    for (final e in svgs) //
       Svg.parse(e.key, e.value, ignoreShapes: ignoreShapes)
   ];
 

@@ -18,6 +18,12 @@ String _getVarName(String string) {
   return RegExp(r'^[a-zA-Z$].*').firstMatch(replaced)?.group(0) ?? '';
 }
 
+extension on GenericGlyph {
+  String get varName {
+    return _getVarName(p.basenameWithoutExtension(metadata.name!)).camelCase;
+  }
+}
+
 /// A helper for generating Flutter-compatible class with IconData objects for each icon.
 class FlutterClassGenerator {
   /// * [glyphList] is a list of non-default glyphs.
@@ -52,8 +58,7 @@ class FlutterClassGenerator {
     final iconNameSet = <String>{};
 
     return glyphList.map((g) {
-      final baseName =
-          _getVarName(p.basenameWithoutExtension(g.metadata.name!)).camelCase;
+      final baseName = g.varName;
       final usingDefaultName = baseName.isEmpty;
 
       var variableName = usingDefaultName ? _kUnnamedIconName : baseName;
@@ -134,6 +139,14 @@ class FlutterClassGenerator {
     final classContentString =
         classContent.map((e) => e.isEmpty ? '' : '$_indent$e').join('\n');
 
+    final allIcons = _iconVarNames.isNotEmpty
+        ? '''
+  static const allIcons = {
+  ${_iconVarNames.map((i) => '\'$i\': $i').join(', ')},
+  };
+    '''
+        : '';
+
     return '''// Generated code: do not hand-edit.
 
 // Generated using $kVendorName.
@@ -161,6 +174,8 @@ import 'package:flutter/widgets.dart';
 /// ```
 class $_className {
 $classContentString
+
+$allIcons
 }
 ''';
   }
